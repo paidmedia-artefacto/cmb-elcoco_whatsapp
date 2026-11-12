@@ -1,0 +1,158 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>CMB El Coco · 5–11 nov</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: informe clínico en una columna; totales, conjuntos, mejor/peor, acciones */
+:root{
+  --bg:#f5f8f8; --surface:#ffffff; --ink:#10282c; --muted:#5b7276; --line:#dbe5e6;
+  --accent:#0f7c7a; --accent-soft:#d6eeec;
+  --good:#1d7a45; --good-bg:#e1f3e8; --warn:#9a6400; --warn-bg:#fbf0d9; --bad:#b4372f; --bad-bg:#fbe4e1;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-num:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1719; --surface:#132226; --ink:#e3eeef; --muted:#93aaad; --line:#24393d;
+  --accent:#4cc3bd; --accent-soft:#16393a;
+  --good:#6fd39a; --good-bg:#16352a; --warn:#f0c062; --warn-bg:#3a2f14; --bad:#f08a80; --bad-bg:#3d1d1a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1719; --surface:#132226; --ink:#e3eeef; --muted:#93aaad; --line:#24393d;
+  --accent:#4cc3bd; --accent-soft:#16393a;
+  --good:#6fd39a; --good-bg:#16352a; --warn:#f0c062; --warn-bg:#3a2f14; --bad:#f08a80; --bad-bg:#3d1d1a; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+.wrap{max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:36px}
+h1,h2{text-wrap:balance;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:800;line-height:1.15}
+h2{font-size:1.2rem;font-weight:700}
+p{margin:0;max-width:68ch}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:700}
+.meta{color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:6px 18px}
+header{display:flex;flex-direction:column;gap:10px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+section{display:flex;flex-direction:column;gap:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.kpi{background:var(--surface);padding:16px 18px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kpi .lbl{font-size:.78rem;color:var(--muted);font-weight:600}
+.kpi .val{font-family:var(--f-num);font-size:1.6rem;font-weight:600;font-variant-numeric:tabular-nums}
+.kpi .cmp{font-size:.82rem;color:var(--muted)}
+@media (max-width:720px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.d{font-family:var(--f-num);font-size:.8rem;font-weight:600;padding:1px 6px;border-radius:4px;white-space:nowrap}
+.good{color:var(--good);background:var(--good-bg)}.bad{color:var(--bad);background:var(--bad-bg)}.flat{color:var(--muted);background:var(--line)}
+.note{background:var(--accent-soft);border-radius:10px;padding:14px 18px;font-size:.92rem}
+.note.crit{background:var(--bad-bg)}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media (max-width:760px){.cols{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card.best{border-left:4px solid var(--good)}
+.card.worst{border-left:4px solid var(--bad)}
+.card .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
+.card.best .tag{color:var(--good)}.card.worst .tag{color:var(--bad)}
+.card strong{font-size:1.05rem}
+.stats{display:flex;gap:16px;flex-wrap:wrap;font-size:.85rem}
+.stats div{display:flex;flex-direction:column;min-width:0}
+.stats span:first-child{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+.stats span:last-child{font-family:var(--f-num);font-variant-numeric:tabular-nums;font-weight:600}
+.card p{font-size:.9rem;color:var(--muted)}
+small.prev{color:var(--muted);font-weight:400}
+.tbl-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.86rem}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);vertical-align:middle}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+th:first-child,td:first-child{text-align:left}
+tbody tr:last-child td{border-bottom:0}
+td.name{font-weight:600}
+tr.b td{background:color-mix(in srgb,var(--good-bg) 55%,transparent)}
+tr.w td{background:color-mix(in srgb,var(--bad-bg) 55%,transparent)}
+.share{display:flex;height:12px;border-radius:6px;overflow:hidden;background:var(--line)}
+.share i{display:block;height:100%}
+.sharegrid{display:grid;grid-template-columns:110px minmax(0,1fr);gap:8px 12px;align-items:center;font-size:.85rem}
+.sharegrid span{color:var(--muted)}
+.legend{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:12px;height:10px;border-radius:2px;display:inline-block}
+ul.alerts{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+ul.alerts li{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:6px;padding:12px 16px;font-size:.92rem}
+ul.alerts li.crit{border-left-color:var(--bad)}
+ul.alerts li.ok{border-left-color:var(--good)}
+footer{color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:14px}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Centros Médicos Bonanza El Coco · Meta Ads · Conversaciones de WhatsApp</span>
+  <h1>Rendimiento semanal de El Coco</h1>
+  <div class="meta">
+    <span>Últimos 7 días: <b>5–11 nov 2026</b></span>
+    <span>vs. 29 oct – 4 nov 2026</span>
+    <span>Conjuntos ElCoco dentro de CentrosMedicosBonanza_Engagement-Whatsapp_AlwaysOn</span>
+  </div>
+</header>
+
+<section aria-label="Totales">
+  <div class="kpis">
+    <div class="kpi"><span class="lbl">Conversaciones iniciadas</span><span class="val">43</span><span class="cmp">vs 41 · <span class="d flat">+4,9%</span></span></div>
+    <div class="kpi"><span class="lbl">Costo por conversación</span><span class="val">$2,47</span><span class="cmp">vs $1,71 · <span class="d bad">+44,3%</span></span></div>
+    <div class="kpi"><span class="lbl">Monto gastado</span><span class="val">$106,21</span><span class="cmp">vs $70,18 · <span class="d flat">+51,3%</span></span></div>
+    <div class="kpi"><span class="lbl">Alcance</span><span class="val">22.708</span><span class="cmp">vs 15.475 · <span class="d flat">+46,7%</span></span></div>
+  </div>
+  <div class="note crit"><b>Se gastó 51% más para obtener solo 2 conversaciones más.</b> Casi todo el gasto adicional se fue a Feria Ultrasonidos y Feria Gastroenterología, que se encarecieron. Odontología y Ginecología se mantuvieron estables.</div>
+</section>
+
+<section aria-label="Conjuntos">
+  <h2>Resultados por conjunto</h2>
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Conjunto</th><th>Conv.</th><th>Cambio</th><th>Costo / conv.</th><th>Cambio</th><th>Gasto</th><th>Presup. diario</th></tr></thead>
+    <tbody class="num">
+      <tr class="b"><td class="name">Feria Odontología</td><td>17 <small class="prev">/ 18</small></td><td><span class="d flat">−5,6%</span></td><td>$1,16 <small class="prev">/ $1,17</small></td><td><span class="d flat">−0,2%</span></td><td>$19,79 <small class="prev">/ $21,00</small></td><td>$3</td></tr>
+      <tr><td class="name">Feria Ultrasonidos</td><td>16 <small class="prev">/ 12</small></td><td><span class="d good">+33,3%</span></td><td>$3,11 <small class="prev">/ $2,03</small></td><td><span class="d bad">+53,4%</span></td><td>$49,79 <small class="prev">/ $24,34</small></td><td>$6</td></tr>
+      <tr><td class="name">Consulta Ginecología</td><td>7 <small class="prev">/ 7</small></td><td><span class="d flat">0%</span></td><td>$1,88 <small class="prev">/ $1,90</small></td><td><span class="d flat">−1,2%</span></td><td>$13,15 <small class="prev">/ $13,31</small></td><td>$2</td></tr>
+      <tr class="w"><td class="name">Feria Gastroenterología</td><td>3 <small class="prev">/ 4</small></td><td><span class="d bad">−25,0%</span></td><td>$7,83 <small class="prev">/ $2,88</small></td><td><span class="d bad">+171,5%</span></td><td>$23,48 <small class="prev">/ $11,53</small></td><td>$3</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="legend">
+    <span><i class="sw" style="background:var(--good)"></i>Odontología</span>
+    <span><i class="sw" style="background:var(--accent)"></i>Ultrasonidos</span>
+    <span><i class="sw" style="background:var(--warn)"></i>Ginecología</span>
+    <span><i class="sw" style="background:var(--bad)"></i>Gastroenterología</span>
+  </div>
+  <div class="sharegrid">
+    <span>Gasto</span><div class="share"><i style="width:18.6%;background:var(--good)"></i><i style="width:46.9%;background:var(--accent)"></i><i style="width:12.4%;background:var(--warn)"></i><i style="width:22.1%;background:var(--bad)"></i></div>
+    <span>Conversaciones</span><div class="share"><i style="width:39.5%;background:var(--good)"></i><i style="width:37.2%;background:var(--accent)"></i><i style="width:16.3%;background:var(--warn)"></i><i style="width:7%;background:var(--bad)"></i></div>
+  </div>
+</section>
+
+<section aria-label="Mejor y peor">
+  <h2>Mejor y peor conjunto</h2>
+  <div class="cols">
+    <div class="card best">
+      <span class="tag">Mejor</span>
+      <strong>Feria Odontología</strong>
+      <div class="stats"><div><span>Conv.</span><span>17</span></div><div><span>Costo</span><span>$1,16</span></div><div><span>Gasto</span><span>$19,79</span></div></div>
+      <p>Con 19% del gasto genera 40% de las conversaciones. Su costo es estable desde octubre (entre $1,16 y $1,32) y gasta todo su presupuesto de $3 diarios.</p>
+    </div>
+    <div class="card worst">
+      <span class="tag">Peor</span>
+      <strong>Feria Gastroenterología</strong>
+      <div class="stats"><div><span>Conv.</span><span>3</span></div><div><span>Costo</span><span>$7,83</span></div><div><span>Gasto</span><span>$23,48</span></div></div>
+      <p>Se lleva 22% del gasto para 7% de las conversaciones. Es la tercera revisión seguida en la que sale como el conjunto más caro de El Coco.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Acciones">
+  <h2>Acciones recomendadas</h2>
+  <ul class="alerts">
+    <li class="crit"><b>Pausar Feria Gastroenterología</b> y pasar sus $3 diarios a Feria Odontología.</li>
+    <li><b>Revisar Feria Ultrasonidos.</b> Duplicó su gasto y su costo subió 53%: las 4 conversaciones extra costaron unos $6,36 cada una. Confirmar que la oferta de la feria siga vigente o actualizar el anuncio.</li>
+    <li class="ok"><b>Mantener Odontología y Ginecología.</b> Los dos repiten costo semana a semana; Odontología es el primero para recibir más presupuesto.</li>
+  </ul>
+</section>
+
+<footer>Fuente: Administrador de anuncios de Meta, informe GrupoBonanza_Seguimiento, consultado el 12 nov 2026. Volúmenes pequeños: pocas conversaciones mueven mucho los porcentajes. Ventana de atribución predeterminada.</footer>
+</div>
+
+</body></html>
